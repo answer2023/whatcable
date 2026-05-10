@@ -61,6 +61,13 @@ if includePro {
             path: "app/Sources/WhatCableProFeatures"
         )
     )
+    targets.append(
+        .testTarget(
+            name: "WhatCableProFeaturesTests",
+            dependencies: ["WhatCableProFeatures"],
+            path: "app/Tests/WhatCableProFeaturesTests"
+        )
+    )
 }
 
 targets.append(

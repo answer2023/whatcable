@@ -4,6 +4,9 @@ import WidgetKit
 import os.log
 import WhatCableCore
 import WhatCableDarwinBackend
+#if WHATCABLE_PRO
+import WhatCableProFeatures
+#endif
 
 /// Writes a pre-computed WidgetSnapshot to the macOS team-prefixed App Group
 /// shared container whenever cable state changes, then tells WidgetKit to
@@ -39,6 +42,14 @@ final class WidgetDataWriter {
     private var heartbeatTask: Task<Void, Never>?
     private var lastSnapshot: WidgetSnapshot?
     private var isStarted = false
+
+#if WHATCABLE_PRO
+    private let powerTelemetry = PowerTelemetryWatcher()
+    /// Rolling per-port wattage samples keyed by 1-based port index. Each
+    /// buffer holds the last 12 samples (~24s at the watcher's 2s poll rate).
+    private var recentPowerByPort: [Int: [Double]] = [:]
+    private let maxRecentSamples = 12
+#endif
 
     /// How often to re-write the snapshot even when ports haven't changed.
     /// Keeps the timestamp fresh so the widget's staleness check doesn't
@@ -88,6 +99,16 @@ final class WidgetDataWriter {
             .dropFirst()
             .sink { [weak self] _ in self?.scheduleWrite() }
             .store(in: &cancellables)
+
+#if WHATCABLE_PRO
+        powerTelemetry.start()
+        powerTelemetry.$latestSnapshot
+            .compactMap { $0 }
+            .sink { [weak self] snapshot in
+                self?.appendPower(from: snapshot)
+            }
+            .store(in: &cancellables)
+#endif
 
         // Periodic heartbeat: re-write the snapshot with a fresh timestamp
         // even when ports haven't changed. This prevents the widget's
@@ -146,6 +167,46 @@ final class WidgetDataWriter {
         Self.log.debug("Widget heartbeat: refreshed timestamp and reloaded timelines (\(snapshot.ports.count) ports)")
     }
 
+#if WHATCABLE_PRO
+    /// Push a fresh PowerTelemetryWatcher snapshot into the rolling buffers.
+    private func appendPower(from snapshot: PowerMonitorSnapshot) {
+        var changed = false
+        for (offset, sample) in snapshot.portSamples.enumerated() {
+            let index = sample.portIndex > 0 ? sample.portIndex : offset + 1
+            let watts = Double(sample.watts) / 1000
+            // Only track samples while the port is actively delivering power;
+            // idle ports get their buffer cleared so the widget shows a flat
+            // line rather than stale data.
+            guard sample.watts > 0 || sample.current > 0 else {
+                if recentPowerByPort.removeValue(forKey: index) != nil {
+                    changed = true
+                }
+                continue
+            }
+            var samples = recentPowerByPort[index, default: []]
+            samples.append((watts * 10).rounded() / 10)
+            if samples.count > maxRecentSamples {
+                samples.removeFirst(samples.count - maxRecentSamples)
+            }
+            recentPowerByPort[index] = samples
+            changed = true
+        }
+        if changed { scheduleWrite() }
+    }
+
+    /// Extract the 1-based port index from "Port-USB-C@N" service names.
+    private func portIndex(for port: USBCPort) -> Int? {
+        let candidates = [port.serviceName, port.portDescription].compactMap { $0 }
+        for name in candidates {
+            if let atRange = name.range(of: "@", options: .backwards) {
+                let suffix = name[atRange.upperBound...]
+                if let value = Int(suffix), value > 0 { return value }
+            }
+        }
+        return nil
+    }
+#endif
+
     private func buildSnapshot() -> WidgetSnapshot {
         let entries: [WidgetSnapshot.PortEntry] = portWatcher.ports.map { port in
             let devices = port.matchingDevices(from: deviceWatcher.devices)
@@ -170,6 +231,13 @@ final class WidgetDataWriter {
 
             let status = WidgetSnapshot.Status(from: summary.status)
 
+            var recentPower: [Double] = []
+#if WHATCABLE_PRO
+            if let index = portIndex(for: port) {
+                recentPower = recentPowerByPort[index] ?? []
+            }
+#endif
+
             return WidgetSnapshot.PortEntry(
                 id: port.id,
                 portName: port.portDescription ?? port.serviceName,
@@ -178,7 +246,8 @@ final class WidgetDataWriter {
                 subtitle: summary.subtitle,
                 topBullet: summary.bullets.first,
                 iconName: status.iconName,
-                deviceCount: devices.count
+                deviceCount: devices.count,
+                recentPower: recentPower
             )
         }
 

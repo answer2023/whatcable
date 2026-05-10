@@ -50,6 +50,12 @@ struct SmallWidgetView: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
             Spacer(minLength: 0)
+#if WHATCABLE_PRO
+            if port.recentPower.count >= 2 {
+                PowerSparkline(samples: port.recentPower, color: port.status.color)
+                    .frame(height: 18)
+            }
+#endif
             Text(port.portName)
                 .font(.caption2)
                 .foregroundStyle(.tertiary)
@@ -141,6 +147,12 @@ struct LargePortRow: View {
                         .lineLimit(1)
                 }
             }
+#if WHATCABLE_PRO
+            if port.recentPower.count >= 2 {
+                PowerSparkline(samples: port.recentPower, color: port.status.color)
+                    .frame(width: 60, height: 24)
+            }
+#endif
             Spacer(minLength: 0)
             if port.deviceCount > 0 {
                 DeviceCountBadge(count: port.deviceCount)
@@ -168,6 +180,50 @@ struct DeviceCountBadge: View {
         .foregroundStyle(.secondary)
     }
 }
+
+#if WHATCABLE_PRO
+// MARK: - Power sparkline
+
+/// Lightweight sparkline drawn with a Path. Avoids the SwiftUI Charts
+/// framework because Charts is finicky inside a WidgetKit extension and
+/// pulls in extra layout cost we don't need for a tiny inline graph.
+struct PowerSparkline: View {
+    let samples: [Double]
+    var color: Color = .yellow
+
+    var body: some View {
+        GeometryReader { geo in
+            let path = sparklinePath(in: geo.size)
+            ZStack {
+                path.stroke(color, lineWidth: 1.4)
+                path.fill(color.opacity(0.15))
+            }
+        }
+    }
+
+    private func sparklinePath(in size: CGSize) -> Path {
+        var path = Path()
+        guard samples.count >= 2, size.width > 0, size.height > 0 else { return path }
+        let minV = samples.min() ?? 0
+        let maxV = samples.max() ?? 1
+        let range = max(maxV - minV, 0.5)
+        let stepX = size.width / CGFloat(samples.count - 1)
+        let points: [CGPoint] = samples.enumerated().map { idx, value in
+            let normalized = (value - minV) / range
+            let y = size.height - CGFloat(normalized) * size.height
+            return CGPoint(x: CGFloat(idx) * stepX, y: y)
+        }
+        path.move(to: CGPoint(x: 0, y: size.height))
+        path.addLine(to: points[0])
+        for point in points.dropFirst() {
+            path.addLine(to: point)
+        }
+        path.addLine(to: CGPoint(x: size.width, y: size.height))
+        path.closeSubpath()
+        return path
+    }
+}
+#endif
 
 // MARK: - Empty state
 

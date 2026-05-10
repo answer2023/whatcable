@@ -33,6 +33,10 @@ public struct WidgetSnapshot: Codable, Equatable {
         /// Number of USB devices matched to this port. Zero when nothing
         /// is plugged in or the connection is power-only.
         public let deviceCount: Int
+        /// Recent per-port wattage samples (oldest first), pre-rounded to 1
+        /// decimal. Empty unless the port has been delivering power. Capped to
+        /// keep the widget JSON small.
+        public let recentPower: [Double]
 
         public init(
             id: UInt64,
@@ -42,7 +46,8 @@ public struct WidgetSnapshot: Codable, Equatable {
             subtitle: String,
             topBullet: String?,
             iconName: String,
-            deviceCount: Int = 0
+            deviceCount: Int = 0,
+            recentPower: [Double] = []
         ) {
             self.id = id
             self.portName = portName
@@ -52,6 +57,7 @@ public struct WidgetSnapshot: Codable, Equatable {
             self.topBullet = topBullet
             self.iconName = iconName
             self.deviceCount = deviceCount
+            self.recentPower = recentPower
         }
 
         /// Custom decoder so that JSON written before `deviceCount` was
@@ -68,6 +74,7 @@ public struct WidgetSnapshot: Codable, Equatable {
             topBullet = try c.decodeIfPresent(String.self, forKey: .topBullet)
             iconName = try c.decode(String.self, forKey: .iconName)
             deviceCount = try c.decodeIfPresent(Int.self, forKey: .deviceCount) ?? 0
+            recentPower = try c.decodeIfPresent([Double].self, forKey: .recentPower) ?? []
         }
     }
 
