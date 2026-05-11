@@ -242,6 +242,7 @@ if [[ -n "${DEVELOPER_ID}" ]]; then
         "${APP_DIR}"
 else
     echo "==> Ad-hoc signing (no DEVELOPER_ID set)"
+    codesign --force --sign - "${HELPERS_DIR}/${CLI_BIN_NAME}"
     codesign --force --entitlements "${WIDGET_ENTITLEMENTS}" \
         --sign - "${PLUGINS_DIR}/${WIDGET_APPEX}"
     codesign --force --entitlements "${ENTITLEMENTS}" \
