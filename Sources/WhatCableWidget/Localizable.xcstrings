@@ -1,0 +1,26 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "No cable data": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无线缆数据"
+          }
+        }
+      }
+    },
+    "Open WhatCable to start monitoring.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 WhatCable 开始监控。"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

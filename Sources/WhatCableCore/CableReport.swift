@@ -154,7 +154,7 @@ extension CableReport.Payload {
         if let t = cable.type {
             lines.append("| Type | \(t) |")
         }
-        lines.append("| Has e-marker | \(cable.hasEmarker ? "Yes" : "No") |")
+        lines.append("| Has e-marker | \(cable.hasEmarker ? String(localized: "Yes", bundle: .module) : String(localized: "No", bundle: .module)) |")
         if cable.hasEmarker {
             // Neutral display: many reputable cables ship without an XID,
             // so this is a fact about the e-marker, not a trust signal.

@@ -1174,6 +1174,236 @@
           }
         }
       }
+    },
+    "Desktop Mac: charger identity (FedDetails) is not available (no battery controller).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "桌面 Mac：充电器身份信息（FedDetails）不可用（无电池控制器）。"
+          }
+        }
+      }
+    },
+    "Physical connection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "物理连接"
+          }
+        }
+      }
+    },
+    "Active element": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有源器件"
+          }
+        }
+      }
+    },
+    "Optically isolated": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光学隔离"
+          }
+        }
+      }
+    },
+    "USB lanes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 通道"
+          }
+        }
+      }
+    },
+    "Two": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "两条"
+          }
+        }
+      }
+    },
+    "One": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一条"
+          }
+        }
+      }
+    },
+    "USB Gen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 代际"
+          }
+        }
+      }
+    },
+    "Gen 2 or higher": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gen 2 或更高"
+          }
+        }
+      }
+    },
+    "Gen 1": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gen 1"
+          }
+        }
+      }
+    },
+    "USB4 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB4"
+          }
+        }
+      }
+    },
+    "USB 3.2 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB 3.2"
+          }
+        }
+      }
+    },
+    "USB 2.0 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB 2.0"
+          }
+        }
+      }
+    },
+    "USB 2.0 hub hops": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 2.0 集线器跳数"
+          }
+        }
+      }
+    },
+    "USB4 asymmetric": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB4 非对称"
+          }
+        }
+      }
+    },
+    "U3 to U0 transition": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "U3 到 U0 转换"
+          }
+        }
+      }
+    },
+    "Through U3S": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "经由 U3S"
+          }
+        }
+      }
+    },
+    "Direct": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直接"
+          }
+        }
+      }
+    },
+    "Idle power (U3/CLd)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空闲功耗（U3/CLd）"
+          }
+        }
+      }
+    },
+    "Max operating temp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高工作温度"
+          }
+        }
+      }
+    },
+    "Shutdown temp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关机温度"
+          }
+        }
+      }
+    },
+    "Yes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "是"
+          }
+        }
+      }
+    },
+    "No": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "否"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

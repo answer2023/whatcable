@@ -17,7 +17,7 @@ public enum TextFormatter {
 
         var out = ""
         if isDesktopMac {
-            out += ANSI.wrap(ANSI.dim, "Desktop Mac: charger identity (FedDetails) is not available (no battery controller).") + "\n\n"
+            out += ANSI.wrap(ANSI.dim, String(localized: "Desktop Mac: charger identity (FedDetails) is not available (no battery controller).", bundle: .module)) + "\n\n"
         }
         for (i, port) in ports.enumerated() {
             if i > 0 { out += "\n" }
@@ -93,20 +93,20 @@ public enum TextFormatter {
                 $0.endpoint == .sopPrime || $0.endpoint == .sopDoublePrime
             }), let v2 = cable.activeCableVDO2 {
                 out += "\n" + ANSI.wrap(ANSI.bold, String(localized: "Active cable (VDO 2):", bundle: .module)) + "\n"
-                out += rawRow("Physical connection", v2.physicalConnection.label)
-                out += rawRow("Active element", v2.activeElement.label)
-                out += rawRow("Optically isolated", yesNo(v2.opticallyIsolated))
-                out += rawRow("USB lanes", v2.twoLanesSupported ? "Two" : "One")
-                out += rawRow("USB Gen", v2.usbGen2OrHigher ? "Gen 2 or higher" : "Gen 1")
-                out += rawRow("USB4 supported", yesNo(v2.usb4Supported))
-                out += rawRow("USB 3.2 supported", yesNo(v2.usb32Supported))
-                out += rawRow("USB 2.0 supported", yesNo(v2.usb2Supported))
-                out += rawRow("USB 2.0 hub hops", String(v2.usb2HubHopsConsumed))
-                out += rawRow("USB4 asymmetric", yesNo(v2.usb4AsymmetricMode))
-                out += rawRow("U3 to U0 transition", v2.u3ToU0TransitionThroughU3S ? "Through U3S" : "Direct")
-                out += rawRow("Idle power (U3/CLd)", v2.u3CLdPower.label)
-                out += rawRow("Max operating temp", tempLabel(v2.maxOperatingTempC))
-                out += rawRow("Shutdown temp", tempLabel(v2.shutdownTempC))
+                out += rawRow(String(localized: "Physical connection", bundle: .module), v2.physicalConnection.label)
+                out += rawRow(String(localized: "Active element", bundle: .module), v2.activeElement.label)
+                out += rawRow(String(localized: "Optically isolated", bundle: .module), yesNo(v2.opticallyIsolated))
+                out += rawRow(String(localized: "USB lanes", bundle: .module), v2.twoLanesSupported ? String(localized: "Two", bundle: .module) : String(localized: "One", bundle: .module))
+                out += rawRow(String(localized: "USB Gen", bundle: .module), v2.usbGen2OrHigher ? String(localized: "Gen 2 or higher", bundle: .module) : String(localized: "Gen 1", bundle: .module))
+                out += rawRow(String(localized: "USB4 supported", bundle: .module), yesNo(v2.usb4Supported))
+                out += rawRow(String(localized: "USB 3.2 supported", bundle: .module), yesNo(v2.usb32Supported))
+                out += rawRow(String(localized: "USB 2.0 supported", bundle: .module), yesNo(v2.usb2Supported))
+                out += rawRow(String(localized: "USB 2.0 hub hops", bundle: .module), String(v2.usb2HubHopsConsumed))
+                out += rawRow(String(localized: "USB4 asymmetric", bundle: .module), yesNo(v2.usb4AsymmetricMode))
+                out += rawRow(String(localized: "U3 to U0 transition", bundle: .module), v2.u3ToU0TransitionThroughU3S ? String(localized: "Through U3S", bundle: .module) : String(localized: "Direct", bundle: .module))
+                out += rawRow(String(localized: "Idle power (U3/CLd)", bundle: .module), v2.u3CLdPower.label)
+                out += rawRow(String(localized: "Max operating temp", bundle: .module), tempLabel(v2.maxOperatingTempC))
+                out += rawRow(String(localized: "Shutdown temp", bundle: .module), tempLabel(v2.shutdownTempC))
             }
 
             out += "\n" + ANSI.wrap(ANSI.bold, String(localized: "Raw IOKit properties:", bundle: .module)) + "\n"
@@ -123,7 +123,7 @@ public enum TextFormatter {
         "  " + ANSI.wrap(ANSI.gray, key) + " = \(value)\n"
     }
 
-    private static func yesNo(_ v: Bool) -> String { v ? "Yes" : "No" }
+    private static func yesNo(_ v: Bool) -> String { v ? String(localized: "Yes", bundle: .module) : String(localized: "No", bundle: .module) }
 
     /// 0 in the temperature fields means "not specified" per the spec.
     private static func tempLabel(_ v: Int) -> String {

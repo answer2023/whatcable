@@ -53,7 +53,7 @@ struct WhatCableApp: App {
                     }
                     .keyboardShortcut(",", modifiers: .command)
 #if WHATCABLE_PRO
-                    Button("Licence...") {
+                    Button(String(localized: "Licence...", bundle: .module)) {
                         delegate.showLicencePanel(nil)
                     }
 #endif
@@ -218,7 +218,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSW
         menu.addItem(.separator())
         menu.addItem(.init(title: String(localized: "Settings…", bundle: .module), action: #selector(menuSettings), keyEquivalent: ","))
 #if WHATCABLE_PRO
-        menu.addItem(.init(title: "Licence...", action: #selector(menuLicence), keyEquivalent: ""))
+        menu.addItem(.init(title: String(localized: "Licence...", bundle: .module), action: #selector(menuLicence), keyEquivalent: ""))
 #endif
         menu.addItem(.init(title: String(localized: "Check for Updates…", bundle: .module), action: #selector(menuCheckUpdates), keyEquivalent: ""))
         menu.addItem(.separator())
@@ -317,8 +317,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSW
         NSApp.activate(ignoringOtherApps: true)
 
         let alert = NSAlert()
-        alert.messageText = "WhatCable Pro required"
-        alert.informativeText = "Power Monitor requires WhatCable Pro."
+        alert.messageText = String(localized: "WhatCable Pro required", bundle: .module)
+        alert.informativeText = String(localized: "Power Monitor requires WhatCable Pro.", bundle: .module)
         alert.window.level = .floating
         alert.runModal()
 

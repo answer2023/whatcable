@@ -767,6 +767,356 @@
           }
         }
       }
+    },
+    "Desktop Mac: charger identity (FedDetails) is not available.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "桌面 Mac：充电器身份信息（FedDetails）不可用。"
+          }
+        }
+      }
+    },
+    "Active cable (VDO 2)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有源线缆（VDO 2）"
+          }
+        }
+      }
+    },
+    "Physical connection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "物理连接"
+          }
+        }
+      }
+    },
+    "Active element": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有源器件"
+          }
+        }
+      }
+    },
+    "Optically isolated": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光学隔离"
+          }
+        }
+      }
+    },
+    "USB lanes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 通道"
+          }
+        }
+      }
+    },
+    "Two": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "两条"
+          }
+        }
+      }
+    },
+    "One": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一条"
+          }
+        }
+      }
+    },
+    "USB Gen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 代际"
+          }
+        }
+      }
+    },
+    "Gen 2 or higher": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gen 2 或更高"
+          }
+        }
+      }
+    },
+    "Gen 1": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gen 1"
+          }
+        }
+      }
+    },
+    "USB4 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB4"
+          }
+        }
+      }
+    },
+    "USB 3.2 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB 3.2"
+          }
+        }
+      }
+    },
+    "USB 2.0 supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 USB 2.0"
+          }
+        }
+      }
+    },
+    "USB 2.0 hub hops": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB 2.0 集线器跳数"
+          }
+        }
+      }
+    },
+    "USB4 asymmetric": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "USB4 非对称"
+          }
+        }
+      }
+    },
+    "U3 to U0 transition": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "U3 到 U0 转换"
+          }
+        }
+      }
+    },
+    "Through U3S": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "经由 U3S"
+          }
+        }
+      }
+    },
+    "Direct": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直接"
+          }
+        }
+      }
+    },
+    "Idle power (U3/CLd)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空闲功耗（U3/CLd）"
+          }
+        }
+      }
+    },
+    "Max operating temp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高工作温度"
+          }
+        }
+      }
+    },
+    "Shutdown temp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关机温度"
+          }
+        }
+      }
+    },
+    "Couldn't check for updates": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法检查更新"
+          }
+        }
+      }
+    },
+    "Unexpected response from GitHub.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub 返回了意外的响应。"
+          }
+        }
+      }
+    },
+    "You're up to date": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已是最新版本"
+          }
+        }
+      }
+    },
+    "WhatCable %@ is the latest version.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatCable %@ 已是最新版本。"
+          }
+        }
+      }
+    },
+    "WhatCable %@ available": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WhatCable %@ 可用"
+          }
+        }
+      }
+    },
+    "You're on %@. Click to view release notes.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前版本 %@。点击查看发行说明。"
+          }
+        }
+      }
+    },
+    "You're on %@. Open the release page to read the notes and download.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前版本 %@。打开发布页查看说明并下载。"
+          }
+        }
+      }
+    },
+    "Update": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新"
+          }
+        }
+      }
+    },
+    "View Release": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看发布页"
+          }
+        }
+      }
+    },
+    "Later": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稍后"
+          }
+        }
+      }
+    },
+    "Licence...": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "许可证…"
+          }
+        }
+      }
+    },
+    "WhatCable Pro required": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要 WhatCable Pro"
+          }
+        }
+      }
+    },
+    "Power Monitor requires WhatCable Pro.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电源监控需要 WhatCable Pro。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

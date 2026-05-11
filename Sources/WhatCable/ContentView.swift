@@ -176,7 +176,7 @@ struct ContentView: View {
             if isDesktopMac {
                 HStack(spacing: 4) {
                     Image(systemName: "info.circle")
-                    Text("Desktop Mac: charger identity (FedDetails) is not available.")
+                    Text(String(localized: "Desktop Mac: charger identity (FedDetails) is not available.", bundle: .module))
                 }
                 .scaledFont(.caption)
                 .foregroundStyle(.secondary)
@@ -724,23 +724,23 @@ struct ActiveCableVDO2Section: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text("Active cable (VDO 2)")
+            Text(String(localized: "Active cable (VDO 2)", bundle: .module))
                 .scaledFont(.caption, weight: .bold)
                 .foregroundStyle(.secondary)
-            row("Physical connection", vdo2.physicalConnection.label)
-            row("Active element", vdo2.activeElement.label)
-            row("Optically isolated", bool(vdo2.opticallyIsolated))
-            row("USB lanes", vdo2.twoLanesSupported ? "Two" : "One")
-            row("USB Gen", vdo2.usbGen2OrHigher ? "Gen 2 or higher" : "Gen 1")
-            row("USB4 supported", bool(vdo2.usb4Supported))
-            row("USB 3.2 supported", bool(vdo2.usb32Supported))
-            row("USB 2.0 supported", bool(vdo2.usb2Supported))
-            row("USB 2.0 hub hops", String(vdo2.usb2HubHopsConsumed))
-            row("USB4 asymmetric", bool(vdo2.usb4AsymmetricMode))
-            row("U3 to U0 transition", vdo2.u3ToU0TransitionThroughU3S ? "Through U3S" : "Direct")
-            row("Idle power (U3/CLd)", vdo2.u3CLdPower.label)
-            row("Max operating temp", temp(vdo2.maxOperatingTempC))
-            row("Shutdown temp", temp(vdo2.shutdownTempC))
+            row(String(localized: "Physical connection", bundle: .module), vdo2.physicalConnection.label)
+            row(String(localized: "Active element", bundle: .module), vdo2.activeElement.label)
+            row(String(localized: "Optically isolated", bundle: .module), bool(vdo2.opticallyIsolated))
+            row(String(localized: "USB lanes", bundle: .module), vdo2.twoLanesSupported ? String(localized: "Two", bundle: .module) : String(localized: "One", bundle: .module))
+            row(String(localized: "USB Gen", bundle: .module), vdo2.usbGen2OrHigher ? String(localized: "Gen 2 or higher", bundle: .module) : String(localized: "Gen 1", bundle: .module))
+            row(String(localized: "USB4 supported", bundle: .module), bool(vdo2.usb4Supported))
+            row(String(localized: "USB 3.2 supported", bundle: .module), bool(vdo2.usb32Supported))
+            row(String(localized: "USB 2.0 supported", bundle: .module), bool(vdo2.usb2Supported))
+            row(String(localized: "USB 2.0 hub hops", bundle: .module), String(vdo2.usb2HubHopsConsumed))
+            row(String(localized: "USB4 asymmetric", bundle: .module), bool(vdo2.usb4AsymmetricMode))
+            row(String(localized: "U3 to U0 transition", bundle: .module), vdo2.u3ToU0TransitionThroughU3S ? String(localized: "Through U3S", bundle: .module) : String(localized: "Direct", bundle: .module))
+            row(String(localized: "Idle power (U3/CLd)", bundle: .module), vdo2.u3CLdPower.label)
+            row(String(localized: "Max operating temp", bundle: .module), temp(vdo2.maxOperatingTempC))
+            row(String(localized: "Shutdown temp", bundle: .module), temp(vdo2.shutdownTempC))
         }
     }
 
@@ -752,7 +752,7 @@ struct ActiveCableVDO2Section: View {
         }
     }
 
-    private func bool(_ v: Bool) -> String { v ? "Yes" : "No" }
+    private func bool(_ v: Bool) -> String { v ? String(localized: "Yes", bundle: .module) : String(localized: "No", bundle: .module) }
 
     /// 0 in this field means "not specified" per the spec text. Show
     /// the dash placeholder rather than the misleading literal "0°C".
