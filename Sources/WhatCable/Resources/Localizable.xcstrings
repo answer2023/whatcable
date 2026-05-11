@@ -45,7 +45,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "检测到 %lld 个 USB-C 端���，但当前没有接入设备。可在\"设置\"中关闭\"隐藏空端口\"查看它们。"
+            "value": "检测到 %lld 个 USB-C 端口，但当前没有接入设备。可在\"设置\"中关闭\"隐藏空端口\"查看它们。"
           }
         }
       }
@@ -483,7 +483,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "将包含内容的预览："
+            "value": "即将提交的内容预览："
           }
         }
       }
