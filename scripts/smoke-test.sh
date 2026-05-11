@@ -148,6 +148,18 @@ if [[ -d "${APP_RESOURCES_SRC}" ]]; then
     cp -R "${APP_RESOURCES_SRC}/." "${bundle_path}/"
 fi
 
+echo "==> Compiling string catalogs (xcstrings → lproj)"
+for xcstrings_file in \
+    "${RESOURCES_DIR}/${SPM_BUNDLE_NAME}/Localizable.xcstrings" \
+    "${RESOURCES_DIR}/${APP_BUNDLE_NAME}/Localizable.xcstrings"; do
+    if [[ -f "${xcstrings_file}" ]]; then
+        bundle_dir=$(dirname "${xcstrings_file}")
+        xcrun xcstringstool compile "${xcstrings_file}" \
+            --output-directory "${bundle_dir}"
+        echo "    Compiled $(basename "${bundle_dir}")"
+    fi
+done
+
 echo "==> Verifying universal binaries"
 lipo -archs "${MACOS_DIR}/${APP_NAME}" | sed 's/^/    app: /'
 lipo -archs "${HELPERS_DIR}/${CLI_BIN_NAME}" | sed 's/^/    cli: /'
@@ -168,6 +180,11 @@ cat > "${CONTENTS_DIR}/Info.plist" <<PLIST
 <dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>zh-Hans</string>
+    </array>
     <key>CFBundleExecutable</key>
     <string>${APP_NAME}</string>
     <key>CFBundleIconFile</key>
